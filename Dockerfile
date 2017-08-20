@@ -3,6 +3,9 @@ MAINTAINER   jianyeruan "jianyeruan@gmail.com"
 ADD mongod.conf /etc/mongod.conf
 ADD run.sh /run.sh
 RUN chmod 755 /run.sh
+RUN mkdir -p /data/db
+RUN mkdir -p /data/log
+RUN touch  /data/log/mongod.log
 RUN apt-get update
 RUN apt-get -y upgrade 
 

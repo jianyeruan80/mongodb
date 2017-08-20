@@ -1,5 +1,6 @@
 docker run -d --volumes-from=data --name mongo -p 27017:27017 jianyeruan/mongo /run.sh mongod --port 27017 --dbpath /data
-
+docker run -d --name=logtest jianyeruan/mg /bin/sh -c "while true; do sleep 2; df -h; done"
+docker run  -d --restart=always  -v /home/jianyeruan/data/db:/data/db  -v /home/jianyeruan/data/log:/data/log/mongod.log   --name mongo -p 27017:27017 jianyeruan/mg /run.sh mongod --config /etc/mongodb.conf
 
 auth:
 docker run -it --volumes-from=data --name mongo -p 27019:27019 jianyeruan/mongo /run.sh mongod --port 27019 --dbpath /data
